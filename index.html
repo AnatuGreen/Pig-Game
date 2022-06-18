@@ -8,7 +8,30 @@
     <title>Pig Game</title>
   </head>
   <body>
-    <h1>Welcome to Pig Game!</h1>
+    <div class="top">
+      <h1>Welcome to Pig Game!</h1>
+      <button class="show-modal">How To Play</button>
+      <div class="modal hidden">
+        <button class="close-modal">&times;</button>
+        <h1>How to play Pig Game 😍</h1>
+        <p>
+          1. The game is between two people.
+          <br />2. Player 1 always starts <br />3. Click the "Roll Dice" button
+          once to generate a random number from 1 to 6 <br />4. If you get 1,
+          you score zero for that roll and it is player 2's turn. The switch is
+          automatic <br />5. If you get anything other than 1 you can "Hold" it
+          and your total score will increase. <br />6. You can decide to roll
+          multiple times to grow your "Current" score before you "Hold". But
+          note that while you are doing that, you may roll 1 which will cancel
+          the current score you have to zero and switch to your opponent.
+          <br />7. The first player to reach 100 or above wins and the game will
+          stop, you can click "New Game" to restart game.<br />
+          8. Goodluck!
+        </p>
+      </div>
+    </div>
+    <div class="overlay hidden"></div>
+
     <main>
       <section class="player player--0 player--active">
         <h2 class="name" id="name--0">Player 1</h2>
@@ -32,6 +55,11 @@
       <button class="btn btn--roll">🎲 Roll dice</button>
       <button class="btn btn--hold">📥 Hold</button>
     </main>
+    <p class="credit-footer">
+      Created by
+      <a href="https://twitter.com/AnatuGreen">Anaturuchi Iroapali</a>, inspired
+      by Jonas Schmedtman
+    </p>
     <script src="script.js"></script>
   </body>
 </html>

@@ -99,79 +99,37 @@ holdBtn.addEventListener('click', function () {
 
 newGameBtn.addEventListener('click', init); //Javascript will call the init function when the button is clicked. NB that there is not need for us to call the function, we only pass it in as a value and when the button is clicked, the function gets called
 
-//What was tried
+//NOTE://Javascript for Modal
 
-/*
-//Original values of current scores at beginning of game
+const modalButton = document.querySelectorAll('.show-modal');
+const modalMessage = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const closeModal = document.querySelector('.close-modal');
 
-let currentScore1 = 0;
-let currentScore2 = 0;
+function closeModalActions() {
+  modalMessage.classList.add('hidden');
+  overlay.classList.add('hidden'); //add the class hidden
+}
 
-//Grab the current scores elements by ids
-let currentScore1El = document.getElementById('current--0');
-let currentScore2El = document.getElementById('current--1');
+function openModalActions() {
+  modalMessage.className = 'modal';
+  overlay.className = 'overlay';
+}
 
-//Original values of total scores when HOLD is clicked at beginning of game
-let totalScores1 = 0;
-let totalScores2 = 0;
+for (let i = 0; i < modalButton.length; i++) {
+  modalButton[i].addEventListener('click', function () {
+    modalMessage.className = 'modal';
+    overlay.className = 'overlay';
+  });
 
-//Grab the total scores elements by ids
-let totalScoreEl1 = document.getElementById('score--0');
-let totalScoreEl2 = document.getElementById('score--1');
+  closeModal.addEventListener('click', function () {
+    closeModalActions();
+  });
+  overlay.addEventListener('click', closeModalActions);
+}
 
-totalScoreEl1.innerText = 0;
-totalScoreEl2.innerText = 0;
-
-//Grab dice and set it to hidden so that at the beginning of game no dice is seen
-const dice = document.querySelector('.dice');
-dice.classList.add('hidden');
-
-//Grab the 'Roll Dice' and "Hold" buttons
-const rollDiceButton = document.querySelector('.btn--roll');
-const holdScoreButton = document.querySelector('.btn--hold');
-
-//Set default active player
-
-let activePlayer = 1;
-
-rollDiceButton.addEventListener('click', function () {
-  const diceRoll = Math.floor(Math.random() * 6 + 1);
-  dice.classList.remove('hidden');
-  dice.src = `dice-${diceRoll}.png`;
-  if (activePlayer === 1 && diceRoll !== 1) {
-    currentScore1 += diceRoll;
-    currentScore1El.textContent = currentScore1;
-  } else if (diceRoll === 1) {
-    activePlayer = 2;
-    currentScore1 = 0;
-    currentScore1El.textContent = currentScore1;
-  }
-
-  if (activePlayer === 2) {
-    currentScore2El.textContent = 0;
-    currentScore2 += diceRoll;
-    currentScore2El.textContent = currentScore2;
-    if (diceRoll === 1) {
-      activePlayer = 1;
-    }
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape' && !modalMessage.classList.contains('hidden')) {
+    closeModalActions();
   }
 });
-
-holdScoreButton.addEventListener('click', function () {
-  if (activePlayer === 1) {
-    totalScoreEl1.textContent =
-      Number(totalScoreEl1.textContent) + currentScore1; //Increase the value of totalScore1el by itself plus currentScore1
-    currentScore1 = 0;
-    currentScore1El.textContent = 0;
-  } else if (activePlayer === 2) {
-    totalScoreEl2.textContent =
-      Number(totalScoreEl2.textContent) + currentScore2; //Increase the value of totalScore2El by itself plus currentScore1
-    currentScore2 = 0;
-    currentScore2El.textContent = 0;
-  }
-
-  //   if (currentScore1 !== 0) {
-  //     totalScore1El.textContent = document.getElementById('current--0').value; }
-});
-
-*/
